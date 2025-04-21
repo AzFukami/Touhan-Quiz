@@ -1,0 +1,370 @@
+/* --- 基本スタイル --- */
+body {
+    font-family: sans-serif; /* 基本のフォント */
+    line-height: 1.6; /* 行間を読みやすく */
+    background-color: #f0f4f8; /* 背景色を少し優しい青系に */
+    display: flex; /* 中央寄せのためのFlexbox */
+    justify-content: center; /* 水平方向中央 */
+    align-items: flex-start; /* 垂直方向は上寄せ */
+    min-height: 100vh; /* 最低でも画面の高さいっぱいにする */
+    padding: 20px; /* 全体に少し余白 */
+    box-sizing: border-box; /* paddingを含めて幅計算 */
+}
+
+/* --- 全画面共通のコンテナスタイル --- */
+.container {
+    background-color: #fff; /* 白い背景 */
+    padding: 30px; /* 内側の余白 */
+    border-radius: 15px; /* 角を少し丸く */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* ふんわりした影 */
+    max-width: 800px; /* 最大幅 */
+    width: 100%; /* 幅は基本100% */
+    margin-bottom: 20px; /* コンテナ間のスペース */
+}
+
+/* --- 見出しスタイル --- */
+h1 {
+    text-align: center; /* 中央揃え */
+    color: #34495e; /* 見出しの色（濃い青灰色） */
+    margin-bottom: 25px;
+    line-height: 1.3; /* タイトルが改行された時用 */
+}
+
+h2, h3 {
+    text-align: center;
+    color: #2c3e50; /* h1より少し濃い色 */
+    margin-bottom: 15px;
+}
+
+/* --- 表紙画面のスタイル --- */
+#start-screen {
+    text-align: center; /* 中身を中央揃え */
+}
+
+#start-screen p {
+    color: #555; /* 説明文の色 */
+    font-size: 1.1em; /* 少し大きめ */
+    margin-bottom: 30px; /* ボタンとのスペース */
+}
+
+.chapter-button {
+    padding: 10px; /* 上下のパディングを少し減らす */
+    min-height: 70px; /* ボタンの最低高さを設定して揃える */
+    font-size: 1.0em; /* 文字サイズを少し調整 */
+    line-height: 1.4; /* 行間調整 */
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* ↓ 文字を上下中央揃えにするために追加 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* 文字も中央揃えに */
+}
+
+.chapter-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* 全問通しボタン (高さは他のボタンと揃えるため min-height を継承) */
+.chapter-button.all-questions {
+    background-color: #e67e22;
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    font-size: 1.1em; /* 全問通しボタンの文字は少し大きくてもOK */
+    padding: 15px 10px; /* パディングは元に戻す */
+}
+.chapter-button.all-questions:hover {
+     background-color: #d35400;
+}
+/* 全問通しボタンの特別スタイル */
+.chapter-button.all-questions {
+    background-color: #e67e22; /* 色を変える（オレンジ系） */
+    grid-column: 1 / -1; /* グリッドの全幅を使う */
+    margin-top: 10px; /* 上のボタンとの間に少しスペース */
+}
+.chapter-button.all-questions:hover {
+     background-color: #d35400; /* ホバー時の色 */
+}
+
+/* --- クイズ画面のスタイル --- */
+#quiz-container {
+    /* 特に個別スタイルは不要 */
+}
+
+#quiz {
+    /* 特に個別スタイルは不要 */
+}
+
+/* 問題番号表示 */
+#question-number {
+    font-size: 1em; /* 少し小さく */
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: right; /* 右寄せ */
+}
+
+/* 問題文表示 */
+#question {
+    font-size: 1.25em; /* 少し大きく */
+    margin-bottom: 25px; /* 選択肢とのスペース */
+    white-space: pre-wrap; /* 改行をそのまま表示 */
+    word-wrap: break-word; /* 長い単語の折り返し */
+    color: #333; /* 問題文の色 */
+}
+
+/* 選択肢ボタンの共通スタイル */
+#options button {
+    display: block; /* ボタンをブロック要素に */
+    width: 100%; /* 幅いっぱい */
+    padding: 15px; /* 内側の余白 */
+    margin-bottom: 12px; /* ボタン間のスペース */
+    background-color: #5dade2; /* 選択肢ボタンの色（水色系） */
+    color: #fff; /* 文字色 */
+    border: none; /* 枠線なし */
+    border-radius: 8px; /* 角丸 */
+    cursor: pointer; /* カーソルを指に */
+    font-size: 1em; /* 文字サイズ */
+    text-align: left; /* 文字を左寄せ */
+    transition: background-color 0.3s; /* ホバー効果 */
+    white-space: normal; /* ボタン内でテキストを折り返す */
+    height: auto; /* 高さを自動に */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* 軽い影 */
+}
+
+/* 選択肢ボタンのホバー時（無効化されてない場合） */
+#options button:hover:not(:disabled) {
+    background-color: #3498db; /* 少し濃い色に */
+}
+
+/* 選択肢ボタンが無効化された時のスタイル */
+#options button:disabled {
+    cursor: not-allowed; /* カーソルを禁止マークに */
+    opacity: 0.7; /* 少し薄くする */
+}
+
+/* --- ナビゲーションボタン（表紙に戻る、前へ、次へ） --- */
+.navigation-buttons {
+    display: flex; /* 横並びにする */
+    justify-content: space-between; /* ボタン間のスペースを均等に */
+    margin-top: 25px; /* 上の要素とのスペース */
+    gap: 10px; /* ボタン間の隙間 */
+}
+
+/* ナビゲーションボタン共通スタイル */
+#quiz-back-to-top,
+#prev-button,
+#next-button {
+    padding: 10px 15px; /* 内側の余白 */
+    color: #fff; /* 文字色 */
+    border: none; /* 枠線なし */
+    border-radius: 8px; /* 角丸 */
+    cursor: pointer; /* カーソル */
+    font-size: 0.95em; /* 文字サイズ */
+    transition: background-color 0.3s, transform 0.2s; /* アニメーション */
+    flex: 1; /* 3つのボタンで幅を均等に分ける */
+    text-align: center; /* 文字を中央揃え */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 影 */
+}
+
+/* 表紙に戻るボタンの色 */
+#quiz-back-to-top {
+    background-color: #f39c12; /* オレンジ系 */
+}
+#quiz-back-to-top:hover {
+    background-color: #e67e22; /* ホバー色 */
+    transform: translateY(-1px); /* ホバー効果 */
+}
+
+/* 前へボタンの色 */
+#prev-button {
+    background-color: #95a5a6; /* グレー系 */
+}
+#prev-button:hover:not(:disabled) {
+    background-color: #7f8c8d; /* ホバー色 */
+     transform: translateY(-1px);
+}
+/* 無効化された前へボタン */
+#prev-button:disabled {
+     background-color: #bdc3c7; /* 薄いグレー */
+     cursor: not-allowed;
+     opacity: 0.7;
+     transform: none; /* ホバー効果なし */
+}
+
+/* 次へ/結果を見るボタンの色 */
+#next-button {
+     background-color: #2ecc71; /* 緑系 */
+}
+#next-button:hover {
+    background-color: #27ae60; /* ホバー色 */
+     transform: translateY(-1px);
+}
+
+
+/* --- 結果表示エリア --- */
+#result {
+    margin-top: 20px; /* 上の要素とのスペース */
+    padding: 20px; /* 内側の余白 */
+    border-radius: 8px; /* 角丸 */
+}
+
+/* 正解時の背景・枠線・文字色 */
+#result.correct {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+/* 不正解時の背景・枠線・文字色 */
+#result.incorrect {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* 結果メッセージ（正解！/残念！）のスタイル */
+#result-message {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 正解表示のスタイル */
+#correct-answer {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 解説表示のスタイル */
+#explanation {
+    margin-top: 15px;
+    white-space: pre-wrap; /* 改行をそのまま表示 */
+    word-wrap: break-word; /* 折り返し */
+}
+
+/* --- 選択肢ボタンの正解・不正解ハイライト --- */
+/* 正解だった選択肢 */
+button.correct-option {
+    background-color: #2ecc71 !important; /* 緑色を優先 */
+    border: 2px solid #27ae60; /* 濃い緑の枠線 */
+}
+
+/* 不正解だった選択肢（正解は別に表示） */
+button.incorrect-option {
+    background-color: #e74c3c !important; /* 赤色を優先 */
+    border: 2px solid #c0392b; /* 濃い赤の枠線 */
+}
+
+/* 自分が選んだ不正解の選択肢 */
+button.selected-incorrect {
+    background-color: #f39c12 !important; /* オレンジ色を優先 */
+    color: #333; /* 文字色を少し濃く */
+    border: 2px solid #e67e22; /* 濃いオレンジの枠線 */
+}
+
+/* --- 終了メッセージ画面 --- */
+#end-message {
+    text-align: center; /* 基本的に中央揃え */
+}
+
+/* 全体結果表示 */
+#overall-result {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 合否判定表示 */
+#pass-fail-result {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding: 10px;
+    border-radius: 8px;
+}
+/* 合格時のスタイル */
+#pass-fail-result.pass {
+    color: #155724;
+    background-color: #d4edda;
+}
+/* 不合格時のスタイル */
+#pass-fail-result.fail {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+/* 分野別成績テーブル */
+#category-results table {
+    width: 100%; /* 幅いっぱい */
+    border-collapse: collapse; /* 枠線を重ねる */
+    margin-top: 15px; /* 上の要素とのスペース */
+}
+
+/* テーブルのヘッダーとセル */
+#category-results th,
+#category-results td {
+    border: 1px solid #ddd; /* 細いグレーの枠線 */
+    padding: 10px; /* セル内の余白 */
+    text-align: center; /* 中央揃え */
+}
+
+/* テーブルのヘッダー行 */
+#category-results th {
+    background-color: #e9ecef; /* 薄いグレー背景 */
+    color: #495057; /* 文字色 */
+}
+
+/* 各章の正答率セルの色付け */
+#category-results td:last-child.pass {
+    color: #155724; /* 合格基準達成なら緑文字 */
+    font-weight: bold;
+}
+#category-results td:last-child.fail {
+    color: #721c24; /* 基準未達なら赤文字 */
+    font-weight: bold;
+}
+
+/* 終了画面のボタン */
+#restart-button,
+#back-to-top-button {
+    display: inline-block; /* 横並びにするため */
+    width: auto; /* 幅は自動 */
+    padding: 12px 30px; /* 内側の余白 */
+    margin: 25px 10px 0; /* 上下のマージンと左右のマージン */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* もう一度挑戦ボタンの色 */
+#restart-button {
+    background-color: #3498db; /* 青系 */
+}
+#restart-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+/* 章選択に戻るボタンの色 */
+#back-to-top-button {
+    background-color: #95a5a6; /* グレー系 */
+}
+#back-to-top-button:hover {
+     background-color: #7f8c8d;
+     transform: translateY(-2px);
+}
+
+
+/* --- 隠すための汎用クラス --- */
+.hide {
+    display: none !important; /* 確実に非表示にする */
+}

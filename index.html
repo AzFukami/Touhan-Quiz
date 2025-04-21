@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登録販売者試験クイズアプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="start-screen" class="container">
+        <h1>登録販売者試験<br>予想問題集！</h1>
+        <p>挑戦したい章を選んでね！💪</p>
+        <div class="chapter-buttons">
+            <button class="chapter-button" data-chapter="1">第1章：20問<br>医薬品に共通する特性と基本的な知識</button>
+            <button class="chapter-button" data-chapter="2">第2章：20問<br>人体の働きと医薬品</button>
+            <button class="chapter-button" data-chapter="3">第3章：40問<br>主な医薬品とその作用</button>
+            <button class="chapter-button" data-chapter="4">第4章：20問<br>薬事に関する法規と制度</button>
+            <button class="chapter-button" data-chapter="5">第5章：20問<br>医薬品の適正使用と安全対策</button>
+            <button class="chapter-button all-questions" data-chapter="all">全問通し (120問)</button>
+        </div>
+    </div>
+
+    <div id="quiz-container" class="container hide">
+        <div id="quiz">
+            <div id="question-number"></div>
+            <div id="question"></div>
+            <div id="options"></div>
+            <div class="navigation-buttons">
+                <button id="quiz-back-to-top">表紙に戻る</button>
+                <button id="prev-button" class="hide">前の問題へ</button>
+                <button id="next-button" class="hide">次の問題へ / 結果を見る</button>
+            </div>
+        </div>
+        <div id="result" class="hide">
+             <div id="result-message"></div>
+             <div id="correct-answer"></div>
+             <div id="explanation"></div>
+         </div>
+    </div>
+
+    <div id="end-message" class="container hide">
+        <h2>クイズ結果</h2>
+         <div id="overall-result"></div>
+         <div id="pass-fail-result"></div>
+         <h3>分野別成績</h3>
+         <div id="category-results"></div>
+         <button id="restart-button">もう一度挑戦する</button>
+         <button id="back-to-top-button">章選択に戻る</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
